@@ -21,3 +21,4 @@ jobs:
         sudo mv packer /usr/local/bin
         echo Validating Packer Install...
         packer --version
+        packer validate packer_templates/centos/centos-7.7-x86_64.json
