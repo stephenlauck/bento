@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  pull_request:
+    branches: 
+      - lauck
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a multi-line script
+      run: |
+        echo Installing Packer...
+        export VER="1.5.1"
+        wget https://releases.hashicorp.com/packer/${VER}/packer_${VER}_linux_amd64.zip
+        unzip packer_${VER}_linux_amd64.zip
+        sudo mv packer /usr/local/bin
+        echo Validating Packer Install...
+        packer --version
